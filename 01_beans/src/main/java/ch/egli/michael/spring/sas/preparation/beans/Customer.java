@@ -5,9 +5,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Customer {
     private String name;
+    private Address address;
  
-    public Customer(String name) {
+    public Customer(String name, Address address) {
         this.name = name;
+        this.address = address;
     }
 
     public String getName() {
@@ -17,5 +19,12 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Address setAddress(Address address) {
+        return this.address = address;
+    }
 }
