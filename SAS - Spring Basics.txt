@@ -1,0 +1,43 @@
+1. Spring Framework
+
+Konzepte (Container, Komponenten, Kontexte, Injection, Auto-Configuration)
+Technologien (Remoting, Data Access, Configuration, Integration)
+
+--
+Spring Boot ist eines der beliebtesten Frameworks für die Entwicklung von Java-Anwendungen. Sein Kern basiert auf zwei grundlegenden Konzepten: Dependency Injection (DI) und Inversion of Control (IoC) .
+
+Bean
+- A bean is an instance of a class managed by the Spring container
+
+Container
+- Part of the core of the Spring Framework
+- Responsible for managing all the beans
+- Performs dependency injection
+
+Annotation Bean vs Component
+Bean is a method level annotation
+Component, Controller, Repository, etc. are class level annotations
+
+The spring application context represents the Spring IoC container and is responsible for instantiating, configuring, and assembling the beans.
+Ein IoC-Container (Inversion of Control-Container) ist eine Komponente eines Software-Frameworks, die die Erstellung und den Lebenszyklus von Objekten (oft als Beans bezeichnet) übernimmt und ihre Abhängigkeiten über Dependency Injection (DI) verwaltet.
+
+
+2. Persistence
+
+Entities, Entity Manager, Persistence Context
+O/R-Mapping, Entity Relationships
+Abfragen mit JPQL
+Spring Data JPA Repositories
+Testcontainers
+3. Spring Core
+
+Spring Beans, Scopes, Dependency Injection
+Transaction Management
+Aspect-oriented Programming
+Messaging mit JMS und AMQP
+4. Spring Web
+
+HTML-Rendering mit Thymeleaf
+Implementierung von REST-Services und -Clients
+Error Handling, Message Converter, Filters, Bean Validation
+Testing und Dokumentation
