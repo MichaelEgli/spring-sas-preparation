@@ -23,8 +23,8 @@ Ein IoC-Container (Inversion of Control-Container) ist eine Komponente eines Sof
 
 AutoConfiguration
 In Spring musste viel manuell konfiguriert werden. z.B. musste man eine Klasse mit @PropertySource(value={"classpath:application.properties"} erzeugen und die Properties dort definieren.
-Mit SpringBoot wurde eine Default-Konfiguration definiert, welche solange nichts anderes angegeben wird, greift (Sprint Boot schaut, solange nichts anderes definiert, automatisch ob es eine Datei application.properties gibt.
-
+Mit SpringBoot wurde eine Default-Konfiguration definiert. Sprint Boot schaut, solange nichts anderes definiert, automatisch ob es eine Datei application.properties gibt.
+z.B. auch automatisch welche ports verwendet werden
 
 
 2. Persistence
