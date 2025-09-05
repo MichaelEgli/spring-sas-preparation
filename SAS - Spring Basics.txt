@@ -34,12 +34,16 @@ O/R-Mapping, Entity Relationships
 Abfragen mit JPQL
 Spring Data JPA Repositories
 Testcontainers
+
+
 3. Spring Core
 
 Spring Beans, Scopes, Dependency Injection
 Transaction Management
 Aspect-oriented Programming
 Messaging mit JMS und AMQP
+
+
 4. Spring Web
 
 HTML-Rendering mit Thymeleaf
