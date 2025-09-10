@@ -42,7 +42,7 @@ Es gibt verschiedene Wege/Konzepte um der Persistence Layer in Spring zu impleme
 
 Welches Problem löst Hibernate?
 Datentransfer/Mapping zwischenDB-Tabelle "USER" und (Java-)Objekt USER (Klasse)
-@Entity in Klasse (Dependency = hibernate-core)
+@Entity in Klasse (Dependency = hibernate-core, Hipernate verwendet da bereits JPA respektive Jakarta imports)
 Falls Klasse und Tabellenname unterschiedlich sind, wird @Table(name = "USERS") verwendet (Tabelle = USERS, class = USER)
 Hibernate muss wissen was der Primary-Key ist. Dies wird in der Klasse bei der Variable (z.B. für private Loing userId) mit folgenden Annotations gemacht: 
 @Id
@@ -57,7 +57,39 @@ public User() {
 }
 Hibernate hat eine eigene Query-Language "HQL". Dies orientiert sich nach Klassenhierarchie. Pure SQL works on tabels.
 Man würde dann schreiben:
-session.createQuery("select u.birthDate from User u", User.class); (SQL wäre Tabellen orientiert: select u.BIRTH_DATE from USERS)
+List<User> users = session.createQuery("select u.birthDate from User u", User.class); (SQL wäre Tabellen orientiert: select u.BIRTH_DATE from USERS)
+
+JPA (Jakarta Persistence API, früher Java Persistence API)
+Eine Schnittstelle für Java-Anwwendungen, die die Zuordnung und Uebertragung von Objekten zu Datenbankeinträgen vereinfacht.
+Hibernate verwendet SessionFactory um Datenbank-Verbindungen aufzubauen, Transaktionen auszuführen und Verbindungen wieder zu schliessen. JPA macht dies über Entity Manager.
+JPA verwendet JPQL (Java Persistence Query Language), was ein Subset von HQL ist.
+final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().coinfigure().build();
+emf = new MetadataSources(registry).buildMetadata().buildSessionsFactory();  // Persistence Provider ist weiterhin Hibernate
+EntityManager em = emf.createEntityManager();
+List<User> users = em.createQuery("select u from User u", User.class).getResultList();
+
+Grundsätzlich entwickelt man gegen JPA und wenn man Hibernate spezifisch was darauf braucht, dann Hibernate.
+
+criteria_api
+criteriaQuery sind grundsätzlich SQLs mit where Klauseln
+
+EntityManager em = emf.createEntityManager();
+CriteriaBuilder db = em.getCriterialBuilder();
+
+CriteriaQuery<User> criteriaQuery = cb.createQuery(User.class);
+Root<User> root = criteriaQuery.from(User.class);
+criteriaQuery.select(root).where(cb.equal(root.get(User_.NAME), "marco"));
+
+Kontext zu Spring-Boot (Spring Data)
+1.) Anstatt das wir hibernate.cfg.xml oder java-persistence.cfg (für EntityManager etc.) konfigurieren ist das Teil von application.properties und wird Spring Boot
+den EntityManager für uns erstellen (quasi managed die Infrastructure....)
+2.) Mit SpringBoot würden nicht nicht Code wie "getTransaction().begin() etc. verwenden. Wir würden die @Transactional Annotation verwenden, worüber das Oeffnen, Schliessen der DB-Verbindungen, Handling der Transactions durch Spring Boot erledigt wird.
+3.) Repositries: dadurch wird ein Interface mit Methoden auf die Tabellen bereitgestellt. Somit kein Query-Bauen...
+interface UserRepository {
+	List <User> findByName(String name); }
+
+SQL Dialects braucht es um SQL für unterschiedliche UseCases oder System-Architekturen zu optimieren: MySQL, PostgreSQL, SQLite, etc.
+
 
 
 3. Spring Core
