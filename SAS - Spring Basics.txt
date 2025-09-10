@@ -35,6 +35,30 @@ Abfragen mit JPQL
 Spring Data JPA Repositories
 Testcontainers
 
+Es gibt verschiedene Wege/Konzepte um der Persistence Layer in Spring zu implementieren
+- Hibernate
+- JPA
+- Spring Data
+
+Welches Problem löst Hibernate?
+Datentransfer/Mapping zwischenDB-Tabelle "USER" und (Java-)Objekt USER (Klasse)
+@Entity in Klasse (Dependency = hibernate-core)
+Falls Klasse und Tabellenname unterschiedlich sind, wird @Table(name = "USERS") verwendet (Tabelle = USERS, class = USER)
+Hibernate muss wissen was der Primary-Key ist. Dies wird in der Klasse bei der Variable (z.B. für private Loing userId) mit folgenden Annotations gemacht: 
+@Id
+@GeneratedValue(strategy = GenrationType.IDENTITY)
+
+Falls Column-Name und Objekt-Variable nicht gleich heissen (Column-Name in DB = BIRTH_DATE, in Java Klasse = birthDate):
+@Colunm(name = "birth_day")
+private LocalDate birthDate;
+
+Hibernate braucht einen empty Constructor um Daten zu fetchen (abrufen):
+public User() {
+}
+Hibernate hat eine eigene Query-Language "HQL". Dies orientiert sich nach Klassenhierarchie. Pure SQL works on tabels.
+Man würde dann schreiben:
+session.createQuery("select u.birthDate from User u", User.class); (SQL wäre Tabellen orientiert: select u.BIRTH_DATE from USERS)
+
 
 3. Spring Core
 
