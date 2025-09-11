@@ -6,6 +6,8 @@ Technologien (Remoting, Data Access, Configuration, Integration)
 --
 Spring Boot ist eines der beliebtesten Frameworks für die Entwicklung von Java-Anwendungen. Sein Kern basiert auf zwei grundlegenden Konzepten: Dependency Injection (DI) und Inversion of Control (IoC) .
 
+IoC is a principle (Konzept). Du gibst die Kontrolle über das Managen der "klassenübergreifenden Objektverwendung" an Spring. DI (Dependency Injection) ist die Implementierung/Design Pattern von IoC in Spring.
+
 Bean
 - A bean is an instance of a class managed by the Spring container
 
@@ -39,6 +41,9 @@ Es gibt verschiedene Wege/Konzepte um der Persistence Layer in Spring zu impleme
 - Hibernate
 - JPA
 - Spring Data
+
+Hibernate ist ein ORM-Tool (Object Reletation Model)
+JPA ist ein Standard, Hibernate implementiert diesen.
 
 Welches Problem löst Hibernate?
 Datentransfer/Mapping zwischenDB-Tabelle "USER" und (Java-)Objekt USER (Klasse)
