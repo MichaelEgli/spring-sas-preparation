@@ -31,7 +31,7 @@ public class ProductController {
 
     @PutMapping("/products")
     public void updateProduct(@RequestBody Product prod) {
-        service.updateProduct(prod);
+        service.updateProduct(prod, prod.getProdId());
     }
 
     @DeleteMapping("/products/{prodId}")

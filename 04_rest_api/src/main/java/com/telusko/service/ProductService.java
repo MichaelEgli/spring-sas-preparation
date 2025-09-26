@@ -27,29 +27,39 @@ public class ProductService {
         products.add(prod);
     }
 
-    public void updateProduct(Product prod) {
-        int index = 0;
-        for(int i = 0; i < products.size(); i++) {
+    public void updateProduct(Product prod, int prodId) {
+
+        products.set(getIndexOfProductId(prodId), prod);
+
+        // int index = 0;
+/*        for(int i = 0; i < products.size(); i++) {
             if(products.get(i).getProdId() == prod.getProdId()) {
                 index = i;
             }
-        }
-/*        for(Product p : getProducts()) {
-            if(p.getProdId() == prod.getProdId() ) {
-                index = p.getProdId();
+        }*/
+        //products.set(index, prod);
+
+/*        for(Product item : products) {
+            if(item.getProdId() == prod.getProdId()) {
+                products.set(products.indexOf(item), prod);
+                break;
             }
         }*/
-        products.set(index, prod);
     }
 
     public void deleteProduct(int prodId) {
+        products.remove(getIndexOfProductId(prodId));
+    }
+
+    private int getIndexOfProductId(int prodId) {
         int index = 0;
-        for(int i = 0; i < products.size(); i++) {
-            if(products.get(i).getProdId() == prodId) {
-                index = i;
+        for(Product item : products) {
+            if(item.getProdId() == prodId) {
+                index = products.indexOf(item);
+                break;
             }
         }
-        products.remove(index);
+        return index;
     }
 
 }
