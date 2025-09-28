@@ -42,8 +42,11 @@ Es gibt verschiedene Wege/Konzepte um der Persistence Layer in Spring zu impleme
 - JPA
 - Spring Data
 
-Hibernate ist ein ORM-Tool (Object Reletation Model)
+JDBC ist eine Datenbankschnittstelle der Java-Plattform, die eine einheitliche Schnittstelle zu relationalen Datenbanken bietet.
+
+Hibernate ist ein ORM-Tool (Object Relation Model)
 JPA ist ein Standard, Hibernate implementiert diesen.
+Dies ermöglicht (einfacher) das ORM-Tool zu wechseln (z.B. von Hibernate auf EclipseLink).
 
 Welches Problem löst Hibernate?
 Datentransfer/Mapping zwischenDB-Tabelle "USER" und (Java-)Objekt USER (Klasse)
