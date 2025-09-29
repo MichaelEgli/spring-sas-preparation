@@ -1,0 +1,6 @@
+com\telusko\service\ProductService.class
+com\telusko\controller\LoginController.class
+com\telusko\controller\HomeController.class
+com\telusko\controller\ProductController.class
+com\telusko\Part18H2WebAppApplication.class
+com\telusko\model\Product.class
