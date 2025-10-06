@@ -31,18 +31,6 @@ public class Product {
 
     public Product() {}
 
-    public Product(int id, String name, String desc, String brand, BigDecimal price, String category, Date releaseDate, boolean available, int quantity) {
-        this.id = id;
-        this.name = name;
-        this.desc = desc;
-        this.brand = brand;
-        this.price = price;
-        this.category = category;
-        this.releaseDate = releaseDate;
-        this.available = available;
-        this.quantity = quantity;
-    }
-
     public int getId() {
         return id;
     }
