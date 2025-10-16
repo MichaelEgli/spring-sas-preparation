@@ -3,6 +3,8 @@ package com.telusko.ecom.controller;
 import com.telusko.ecom.model.Product;
 import com.telusko.ecom.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,13 +23,21 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public List<Product> getAllProducts() {
-        return service.getAllProducts();
+    public ResponseEntity<List<Product>> getAllProducts() {
+        return new ResponseEntity<>(service.getAllProducts(), HttpStatus.OK);
     }
 
     @GetMapping("/product/{id}")
-    public Product getProduct(@PathVariable int id) {
-        return service.getProductById(id);
+    public ResponseEntity<Product> getProduct(@PathVariable int id) {
+
+        Product product = service.getProductById(id);
+
+        if(product != null)
+            return new ResponseEntity<>(service.getProductById(id), HttpStatus.OK);
+
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // 404 in postman (instead of 500)
+
     }
 
 }
