@@ -30,5 +30,4 @@ public class ProductController {
         return service.getProductById(id);
     }
 
-
 }
