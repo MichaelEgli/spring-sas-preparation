@@ -1,0 +1,20 @@
+package ch.eglim.spring.jms;
+
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.context.annotation.Bean;
+import org.testcontainers.activemq.ActiveMQContainer;
+import org.testcontainers.utility.DockerImageName;
+
+@TestConfiguration(proxyBeanMethods = false)
+class TestcontainersConfiguration {
+
+    private static final int ACTIVEMQ_PORT = 61616;
+
+	@Bean
+	@ServiceConnection
+	ActiveMQContainer activemqContainer() {
+		return new ActiveMQContainer(DockerImageName.parse("apache/activemq-classic:latest")).withExposedPorts(ACTIVEMQ_PORT);
+	}
+
+}
